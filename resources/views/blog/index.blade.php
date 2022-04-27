@@ -24,7 +24,7 @@
 
                         <!-- Mobile Categories -->
                         <div class="d-lg-none input-group">
-                            <select class="form-select" name="category" id="category" aria-label="Filter">
+                            <select class="form-select" name="category" id="category" aria-label="Category Filter">
                                 <option value="">All Categories</option>
                                 @foreach(range(1, 8) as $category)
                                     <option value="{{ $category }}">Category {{ $category }}</option>
@@ -46,13 +46,13 @@
                         </div>
                     </div>
 
-                    <!-- Archive -->
+                    <!-- Archives -->
                     <div class="mb-3" id="post_archive">
-                        <h3 class="d-none d-lg-block">{{ __('Archive') }}</h3>
+                        <h3 class="d-none d-lg-block">{{ __('Archives') }}</h3>
 
                         <!-- Mobile Archive -->
                         <div class="d-lg-none input-group">
-                            <select class="form-select" name="published_at" id="categorpublished_aty" aria-label="Filter">
+                            <select class="form-select" name="published" id="published" aria-label="Published Filter">
                                 <option value="">All Posts</option>
                                 @foreach(range(1, 12) as $month)
                                     <option value="{{ $month }}">{{ \Carbon\Carbon::createFromDate(month: $month)->format('M Y') }}</option>
@@ -78,12 +78,12 @@
 
             <!-- Posts -->
             <div class="order-lg-0 col-lg-9">
-                <div class="row row-cols-md-2 row-cols-xl-3">
+                <div class="row align-items-stretch row-cols-md-2 row-cols-xl-3">
                     @foreach(range(1, 12) as $post)
-                        <div class="{{ $loop->last ? '' : 'mb-3' }}">
-                            <div class="card shadow-sm">
+                        <div class="mb-3">
+                            <div class="card shadow-sm h-100">
                                 <!-- Post Meta / Excerpt -->
-                                <div class="card-body">
+                                <div class="d-flex flex-column card-body">
                                     <h6>
                                         <a class="link-dark" href="#">Category {{ random_int(1, 8) }}</a>
                                         <small>&mdash;</small>
@@ -95,7 +95,7 @@
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         Quae, voluptatem?
                                     </p>
-                                    <div>
+                                    <div class="mt-auto">
                                         @foreach(range(1, 2) as $tag)
                                             <div class="badge bg-secondary">Tag {{ $tag }}</div>
                                         @endforeach
