@@ -1,3 +1,8 @@
+@php
+    $categories = range(1, 8);
+    $months = range(1, 12);
+    $posts = range(1, 12);
+@endphp
 <x-layouts.app>
     <div class="container">
         <h3 class="fw-bold">{{ __('Blog') }}</h3>
@@ -26,8 +31,8 @@
                         <div class="d-lg-none input-group">
                             <select class="form-select" name="category" id="category" aria-label="Category Filter">
                                 <option value="">All Categories</option>
-                                @foreach(range(1, 8) as $category)
-                                    <option value="{{ $category }}">Category {{ $category }}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category }}" @selected()>Category {{ $category }}</option>
                                 @endforeach
                             </select>
                             <button class="btn btn-outline-secondary">
@@ -39,7 +44,7 @@
                         <!-- Desktop Categories -->
                         <div class="d-none d-lg-block card card-body">
                             <nav class="row row-cols-2 text-truncate">
-                                @foreach(range(1, 8) as $category)
+                                @foreach($categories as $category)
                                     <a href="#">Category {{ $category }}</a>
                                 @endforeach
                             </nav>
@@ -54,7 +59,7 @@
                         <div class="d-lg-none input-group">
                             <select class="form-select" name="published" id="published" aria-label="Published Filter">
                                 <option value="">All Posts</option>
-                                @foreach(range(1, 12) as $month)
+                                @foreach($months as $month)
                                     <option value="{{ $month }}">{{ \Carbon\Carbon::createFromDate(month: $month)->format('M Y') }}</option>
                                 @endforeach
                             </select>
@@ -67,7 +72,7 @@
                         <!-- Desktop Archive -->
                         <div class="d-none d-lg-block mb-3 card card-body">
                             <nav class="row row-cols-2">
-                                @foreach(range(1, 12) as $month)
+                                @foreach($months as $month)
                                     <a href="#">{{ \Carbon\Carbon::createFromDate(month: $month)->format('M Y') }}</a>
                                 @endforeach
                             </nav>
@@ -79,7 +84,7 @@
             <!-- Posts -->
             <div class="order-lg-0 col-lg-9">
                 <div class="row align-items-stretch row-cols-md-2 row-cols-xl-3">
-                    @foreach(range(1, 12) as $post)
+                    @foreach($posts as $post)
                         <div class="mb-3">
                             <div class="card shadow-sm h-100">
                                 <!-- Post Meta / Excerpt -->
@@ -104,7 +109,7 @@
 
                                 <!-- Post CTA / Comments Count -->
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a href="#">{!! __('Read More &raquo;') !!}</a>
+                                    <a href="{{ url('blog/1') }}">{!! __('Read More &raquo;') !!}</a>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <span class="bi bi-chat-quote"></span>
                                         <span class="ms-2">{{ random_int(1, 10) }}</span>
