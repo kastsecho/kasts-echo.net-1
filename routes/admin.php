@@ -1,22 +1,18 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Admin Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register admin routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::prefix('admin')
-    ->name('admin.')
-    ->group(base_path('routes/admin.php'));
+Route::resource('/posts', PostController::class);
+Route::put('/posts/{post}/restore', [PostController::class, 'restore'])->name('posts.restore');
