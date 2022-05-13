@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -57,7 +58,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             <div class="avatar avatar-md">
-                                <img class="avatar-img" src="{{ auth()->user()->avatar }}" alt="user@email.com">
+                                <img class="avatar-img" src="{{ auth()->user()?->avatar }}" alt="user@email.com">
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end pt-0">
