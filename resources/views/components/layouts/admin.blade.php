@@ -40,6 +40,12 @@
                 </a>
             </li>
             <li class="nav-item mt-auto">
+                <a class="nav-link nav-link-danger" href="{{ url('/') }}">
+                    <span class="nav-icon bi-globe"></span>
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link nav-link-danger" href="#">
                     <span class="nav-icon bi-box-arrow-left"></span>
                     {{ __('Log Out') }}
@@ -58,7 +64,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             <div class="avatar avatar-md">
-                                <img class="avatar-img" src="{{ auth()->user()?->avatar }}" alt="user@email.com">
+                                <img class="avatar-img" src="{{ auth()->user()?->avatar }}" alt="Avatar">
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end pt-0">
