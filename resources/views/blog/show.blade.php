@@ -1,6 +1,4 @@
 @php
-    $post_category = random_int(1, 8);
-    $categories = range(1, 8);
     $months = range(1, 12);
     $comments = range(1, random_int(2, 8));
 @endphp
@@ -33,7 +31,7 @@
                             <select class="form-select" name="category" id="category" aria-label="Category Filter">
                                 <option value="">All Categories</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category }}" @selected($post_category === $category)>Category {{ $category }}</option>
+                                    <option value="{{ $category->id }}" @selected($post->category->is($category))>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                             <button class="btn btn-outline-secondary">
@@ -45,8 +43,8 @@
                         <!-- Desktop Categories -->
                         <div class="d-none d-lg-block card card-body">
                             <nav class="row row-cols-2 text-truncate">
-                                @foreach(range(1, 8) as $category)
-                                    <a href="#">Category {{ $category }}</a>
+                                @foreach($categories as $category)
+                                    <a href="#">{{ $category->name }}</a>
                                 @endforeach
                             </nav>
                         </div>
@@ -86,7 +84,7 @@
             <div class="order-lg-0 col-lg-8">
                 <div class="border-bottom pb-2 mb-3">
                     <h4>
-                        Category {{ $post_category }}
+                        {{ $post->category->name }}
                     </h4>
                 </div>
 

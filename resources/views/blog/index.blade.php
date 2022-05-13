@@ -1,5 +1,4 @@
 @php
-    $categories = range(1, 8);
     $months = range(1, 12);
 @endphp
 <x-layouts.app>
@@ -31,7 +30,7 @@
                             <select class="form-select" name="category" id="category" aria-label="Category Filter">
                                 <option value="">All Categories</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category }}">Category {{ $category }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                             <button class="btn btn-outline-secondary">
@@ -44,7 +43,7 @@
                         <div class="d-none d-lg-block card card-body">
                             <nav class="row row-cols-2 text-truncate">
                                 @foreach($categories as $category)
-                                    <a href="#">Category {{ $category }}</a>
+                                    <a class="text-truncate" href="#">{{ $category->name }}</a>
                                 @endforeach
                             </nav>
                         </div>
@@ -89,7 +88,7 @@
                                 <!-- Post Meta / Excerpt -->
                                 <div class="d-flex flex-column card-body">
                                     <h6>
-                                        <a class="link-dark" href="#">Category {{ random_int(1, 8) }}</a>
+                                        <a class="link-dark" href="#">{{ $post->category->name }}</a>
                                         <small>&mdash;</small>
                                         <time class="small text-muted" datetime="{{ $post->created_at->format('Y-m-d H:i') }}">{{ $post->created_at->format('M d, Y') }}</time>
                                     </h6>
