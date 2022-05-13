@@ -1,7 +1,7 @@
 function showModalForm(event, textToReplace = 'id') {
     let button = event.relatedTarget;
     let form = event.target.querySelector('form');
-    let modelId = button.getAttribute('data-bs-model');
+    let modelId = button.getAttribute('data-coreui-model');
 
     if (! modelId) {
         return;
@@ -17,5 +17,5 @@ function showModalForm(event, textToReplace = 'id') {
 let restoreModal = document.getElementById('restoreModal');
 let deleteModal = document.getElementById('deleteModal');
 
-deleteModal.addEventListener('show.bs.modal', showModalForm);
-restoreModal.addEventListener('show.bs.modal', showModalForm);
+deleteModal.addEventListener('show.coreui.modal', showModalForm);
+restoreModal.addEventListener('show.coreui.modal', showModalForm);

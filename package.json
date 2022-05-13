@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@coreui/coreui": "^4.1.5",
         "@popperjs/core": "^2.11.5",
         "alpinejs": "^3.10.2",
         "axios": "^0.27.2",
