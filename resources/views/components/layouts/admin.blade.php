@@ -35,14 +35,20 @@
             <li class="nav-title">{{ __('Resources') }}</li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.posts.*') ? 'active' : '' }}" href="{{ route('admin.posts.index') }}">
-                    <span class="nav-icon bi-layers"></span>
+                    <span class="nav-icon bi-journal"></span>
                     {{ __('Posts') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
+                    <span class="nav-icon bi-layers"></span>
+                    {{ __('Categories') }}
                 </a>
             </li>
             <li class="nav-item mt-auto">
                 <a class="nav-link nav-link-danger" href="{{ url('/') }}">
                     <span class="nav-icon bi-globe"></span>
-                    {{ config('app.name', 'Laravel') }}
+                    {{ __('Visit Site') }}
                 </a>
             </li>
             <li class="nav-item">
