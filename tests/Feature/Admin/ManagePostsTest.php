@@ -72,6 +72,16 @@ class ManagePostsTest extends TestCase
     }
 
     /** @test */
+    public function a_post_requires_a_valid_category()
+    {
+        $post = Post::factory()->create();
+        $attributes = Post::factory()->raw(['category_id' => 999]);
+
+        $this->post('/admin/posts', $attributes)->assertInvalid('category_id');
+        $this->put("/admin/posts/$post->id", $attributes)->assertInvalid('category_id');
+    }
+
+    /** @test */
     public function a_post_requires_a_title()
     {
         $post = Post::factory()->create();
