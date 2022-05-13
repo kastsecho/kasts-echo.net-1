@@ -1,15 +1,15 @@
 <x-layouts.admin>
-    <div class="py-5 container">
+    <div class="container">
         {{-- Start Header/CTA --}}
         <div class="mb-3 d-flex align-items-center justify-content-between" id="header">
             <p class="mb-0 h3">{{ __('Post Details') }}</p>
 
             <div class="d-flex align-items-center justify-content-end">
                 <a class="fw-bold link-danger text-decoration-none me-5" href="#"
-                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                    data-coreui-toggle="modal" data-coreui-target="#deleteModal"
                 >{{ __('Delete Post') }}</a>
 
-                <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post) }}">{{ __('Edit Post') }}</a>
+                <a class="btn btn-info" href="{{ route('admin.posts.edit', $post) }}">{{ __('Edit Post') }}</a>
             </div>
         </div>
         {{-- End Header/CTA --}}
@@ -51,28 +51,28 @@
         {{-- End Details Card --}}
     </div>
 
-    {{-- Start Delete Modal --}}
-    <div class="modal modal-alert" tabindex="-1" role="dialog" id="deleteModal">
-        <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
-            @csrf
-            @method('DELETE')
-            <div class="modal-dialog" role="document">
-                <div class="modal-content rounded-4 shadow">
-                    <div class="p-4 modal-body text-center">
-                        <h5 class="mb-0">{{ __('Delete Post') }}</h5>
-                        <p class="mb-0">{{ __('Are you sure you want to delete this resource?') }}</p>
-                    </div>
-                    <div class="modal-footer flex-nowrap p-0">
-                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">
-                            {{ __('Cancel') }}
-                        </button>
-                        <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0">
-                            <strong>{{ __('Delete Post') }}</strong>
-                        </button>
+    @push('modals')
+        <div class="modal modal-alert" tabindex="-1" role="dialog" id="deleteModal">
+            <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content rounded-4 shadow">
+                        <div class="p-4 modal-body text-center">
+                            <h5 class="mb-0">{{ __('Delete Post') }}</h5>
+                            <p class="mb-0">{{ __('Are you sure you want to delete this resource?') }}</p>
+                        </div>
+                        <div class="modal-footer flex-nowrap p-0">
+                            <button class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" type="button" data-coreui-dismiss="modal">
+                                {{ __('Cancel') }}
+                            </button>
+                            <button class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" type="submit">
+                                <strong>{{ __('Delete Post') }}</strong>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
-    {{-- End Delete Modal --}}
+            </form>
+        </div>
+    @endpush
 </x-layouts.admin>

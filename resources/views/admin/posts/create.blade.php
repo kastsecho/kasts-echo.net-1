@@ -1,5 +1,5 @@
 <x-layouts.admin>
-    <div class="py-5 container">
+    <div class="container">
         {{-- Start Header/CTA --}}
         <div class="mb-3 d-flex align-items-center justify-content-between" id="header">
             <p class="mb-0 h3">{{ __('Create Post') }}</p>
@@ -28,9 +28,9 @@
             </div>
 
             <div class="mt-4 d-flex align-items-center justify-content-end">
-                <a class="fw-bold link-secondary text-decoration-none me-5" href="{{ route('admin.posts.index') }}">{{ __('Cancel') }}</a>
+                <a class="fw-bold link-dark text-decoration-none me-5" href="{{ route('admin.posts.index') }}">{{ __('Cancel') }}</a>
 
-                <button class="btn btn-primary" type="submit">{{ __('Create Post') }}</button>
+                <button class="btn btn-info" type="submit">{{ __('Create Post') }}</button>
             </div>
         </form>
         {{-- End Create Form --}}
