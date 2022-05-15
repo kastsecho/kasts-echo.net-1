@@ -90,7 +90,7 @@
                                 <!-- Post Meta / Excerpt -->
                                 <div class="d-flex flex-column card-body">
                                     <h6 class="d-flex">
-                                        <a class="link-dark text-truncate" href="{{ route('blog.index', ['category' => $category->slug]) }}">{{ $post->category->name }}</a>
+                                        <a class="link-dark text-truncate" href="{{ route('blog.index', ['category' => $post->category->slug]) }}">{{ $post->category->name }}</a>
                                         <small class="mx-1">&mdash;</small>
                                         <time class="w-50 small text-muted" datetime="{{ $post->created_at->format('Y-m-d H:i') }}">{{ $post->created_at->format('M d, Y') }}</time>
                                     </h6>
