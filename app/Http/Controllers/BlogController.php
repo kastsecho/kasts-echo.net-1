@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\PostFilter;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function index(Request $request): \Illuminate\Http\Response|\Illuminate\Contracts\View\View
+    public function index(PostFilter $filter): \Illuminate\Http\Response|\Illuminate\Contracts\View\View
     {
         $categories = Category::all();
-        $posts = Post::latest()->get();
+        $posts = Post::filter($filter)->latest()->get();
 
         return view('blog.index', compact('posts', 'categories'));
     }

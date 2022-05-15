@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 trait {{ class }}
 {
-    public function boot{{ class }}(): void
+    public function booted{{ class }}(): void
     {
         //
     }

@@ -26,24 +26,26 @@
                         <h3 class="d-none d-lg-block">{{ __('Categories') }}</h3>
 
                         <!-- Mobile Categories -->
-                        <div class="d-lg-none input-group">
-                            <select class="form-select" name="category" id="category" aria-label="Category Filter">
-                                <option value="">All Categories</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                            <button class="btn btn-outline-secondary">
-                                <span class="bi bi-filter"></span>
-                                <span class="visually-hidden">Filter</span>
-                            </button>
-                        </div>
+                        <form class="d-lg-none" action="{{ route('blog.index') }}" method="get">
+                            <div class="input-group">
+                                <select class="form-select" name="category" id="category" aria-label="Category Filter">
+                                    <option value="all">All Categories</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->slug }}" @selected(request()->get('category') == $category->slug)>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                <button class="btn btn-outline-secondary">
+                                    <span class="bi bi-filter"></span>
+                                    <span class="visually-hidden">Filter</span>
+                                </button>
+                            </div>
+                        </form>
 
                         <!-- Desktop Categories -->
                         <div class="d-none d-lg-block card card-body">
                             <nav class="row row-cols-2 text-truncate">
                                 @foreach($categories as $category)
-                                    <a class="text-truncate" href="#">{{ $category->name }}</a>
+                                    <a class="text-truncate" href="{{ route('blog.index', ['category' => $category->slug]) }}">{{ $category->name }}</a>
                                 @endforeach
                             </nav>
                         </div>
@@ -87,10 +89,10 @@
                             <div class="card shadow-sm h-100">
                                 <!-- Post Meta / Excerpt -->
                                 <div class="d-flex flex-column card-body">
-                                    <h6>
-                                        <a class="link-dark" href="#">{{ $post->category->name }}</a>
-                                        <small>&mdash;</small>
-                                        <time class="small text-muted" datetime="{{ $post->created_at->format('Y-m-d H:i') }}">{{ $post->created_at->format('M d, Y') }}</time>
+                                    <h6 class="d-flex">
+                                        <a class="link-dark text-truncate" href="{{ route('blog.index', ['category' => $category->slug]) }}">{{ $post->category->name }}</a>
+                                        <small class="mx-1">&mdash;</small>
+                                        <time class="w-50 small text-muted" datetime="{{ $post->created_at->format('Y-m-d H:i') }}">{{ $post->created_at->format('M d, Y') }}</time>
                                     </h6>
 
                                     <h5 class="text-truncate card-title">{{ $post->title }}</h5>

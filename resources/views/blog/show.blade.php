@@ -27,24 +27,26 @@
                         <h3 class="d-none d-lg-block">{{ __('Categories') }}</h3>
 
                         <!-- Mobile Categories -->
-                        <div class="d-lg-none input-group">
-                            <select class="form-select" name="category" id="category" aria-label="Category Filter">
-                                <option value="">All Categories</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" @selected($post->category->is($category))>{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                            <button class="btn btn-outline-secondary">
-                                <span class="bi bi-filter"></span>
-                                <span class="visually-hidden">{{ __('Filter') }}</span>
-                            </button>
-                        </div>
+                        <form class="d-lg-none" action="{{ route('blog.index') }}" method="get">
+                            <div class="input-group">
+                                <select class="form-select" name="category" id="category" aria-label="Category Filter">
+                                    <option value="all">All Categories</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->slug }}" @selected($post->category->is($category))>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                <button class="btn btn-outline-secondary">
+                                    <span class="bi bi-filter"></span>
+                                    <span class="visually-hidden">Filter</span>
+                                </button>
+                            </div>
+                        </form>
 
                         <!-- Desktop Categories -->
                         <div class="d-none d-lg-block card card-body">
                             <nav class="row row-cols-2 text-truncate">
                                 @foreach($categories as $category)
-                                    <a href="#">{{ $category->name }}</a>
+                                    <a class="text-truncate" href="{{ route('blog.index', ['category' => $category->slug]) }}">{{ $category->name }}</a>
                                 @endforeach
                             </nav>
                         </div>

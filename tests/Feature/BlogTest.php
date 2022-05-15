@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Category;
 use App\Models\Post;
 use Tests\TestCase;
 
@@ -27,5 +28,16 @@ class BlogTest extends TestCase
         $this->get("/blog/$post->id")
             ->assertSee($post->title)
             ->assertSee($post->body);
+    }
+
+    /** @test */
+    public function a_user_can_filter_posts_by_category()
+    {
+        $this->withoutExceptionHandling();
+
+        $category = Category::factory()->hasPosts(2)->create();
+        $post = Post::factory()->create();
+
+        $this->get("/blog?category=$category->id")->assertDontSee($post->title);
     }
 }
