@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="h-100" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="vh-100 d-grid align-items-center justify-content-center">
+<body class="h-100 d-grid align-items-center justify-content-center">
     <div id="calc" v-cloak>
         <div class="mb-3">
             <label for="length">Length (inches)</label>
