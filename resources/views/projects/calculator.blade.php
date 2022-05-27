@@ -17,8 +17,8 @@
     </div>
 </div>
 
-<script src="https://unpkg.com/vue@3" defer></script>
-<script>
+<script src="https://unpkg.com/vue@3" async></script>
+<script async>
     let { createApp } = Vue;
 
     createApp({
