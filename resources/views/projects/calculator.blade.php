@@ -9,7 +9,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="min-vh-100 d-grid align-items-center justify-content-center">
+<body class="vh-100 d-grid align-items-center justify-content-center">
     <div id="calc" v-cloak>
         <div class="mb-3">
             <label for="length">Length (inches)</label>
