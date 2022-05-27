@@ -19,7 +19,7 @@
 
 <script src="https://unpkg.com/vue@3" defer></script>
 <script>
-    const { createApp } = Vue;
+    let { createApp } = Vue;
 
     createApp({
         data() {
