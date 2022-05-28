@@ -56,7 +56,7 @@
                 format(cost, digits = 4, currency = 'USD') {
                     return new Intl.NumberFormat('en-US', {
                         style: 'currency',
-                        currency: type,
+                        currency: currency,
                         minimumFractionDigits: digits,
                     }).format(cost);
                 }
