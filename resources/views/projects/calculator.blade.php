@@ -44,7 +44,7 @@
 
             computed: {
                 estimate() {
-                    return this.format(this.length * this.width * this.cost);
+                    return this.format(this.length * this.width * this.cost, 2);
                 },
 
                 costPerInch() {
@@ -53,11 +53,11 @@
             },
 
             methods: {
-                format(cost, type = 'USD') {
+                format(cost, digits = 4, currency = 'USD') {
                     return new Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: type,
-                        minimumFractionDigits: 4,
+                        minimumFractionDigits: digits,
                     }).format(cost);
                 }
             }
