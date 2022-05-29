@@ -32,29 +32,6 @@
                     </div>
                 </div>
             </div>
-
-            <hr>
-
-            <div class="row justify-content-center">
-                <div class="col-12 col-sm-8 col-lg-4" id="calc">
-                    <div class="mb-3">
-                        <label for="length">Length (inches)</label>
-                        <input class="form-control" id="length" type="number" v-model="length" min="1">
-                    </div>
-                    <div class="mb-3">
-                        <label for="width">Width (inches)</label>
-                        <input class="form-control" id="width" type="number" v-model="width" min="1">
-                    </div>
-                    <div class="mb-3 d-flex justify-content-between">
-                        <span>Cost / inch:</span>
-                        <strong v-text="costPerInch"></strong>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>Estimated cost:</span>
-                        <strong v-text="estimate"></strong>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -83,40 +60,6 @@
                 }
             }))
         })
-    </script>
-    <script src="https://unpkg.com/vue@3"></script>
-    <script defer>
-        let { createApp } = Vue;
-
-        createApp({
-            data() {
-                return {
-                    length: 1,
-                    width: 1,
-                    cost: 0.0175,
-                }
-            },
-
-            computed: {
-                estimate() {
-                    return this.format(this.length * this.width * this.cost, 2);
-                },
-
-                costPerInch() {
-                    return this.format(this.cost);
-                }
-            },
-
-            methods: {
-                format(cost, digits = 4, currency = 'USD') {
-                    return new Intl.NumberFormat('en-US', {
-                        style: 'currency',
-                        currency: currency,
-                        minimumFractionDigits: digits,
-                    }).format(cost);
-                }
-            }
-        }).mount('#calc');
     </script>
 </body>
 </html>
